@@ -16,6 +16,7 @@ Keep project continuity in durable project truth, not in chat history. Treat a t
 - At the first substantial checkpoint in a complex project, audit the project layer read-only even when the user does not ask about sessions. Keep adopted-and-continue results internal when no user action is needed.
 - Recommend task changes proactively, but never create, rename, navigate to, archive, or delete a task unless the user explicitly requests that action and the host supports it.
 - Treat a new task as a context boundary, not as permission to implement, change project files, commit, push, deploy, or touch live state.
+- Before the first formal code write in a project session, apply the Codex-mode gate owned by [references/session-model.md](references/session-model.md). Stop implementation when the host explicitly identifies a non-Codex session, or when the mode is unknown and the user has not explicitly confirmed switching the current session to Codex mode.
 - Preserve user state. Re-check live processes, configuration, logs, services, scheduled jobs, connected systems, and other volatile facts read-only before acting on them.
 
 ## Core workflow
@@ -28,13 +29,13 @@ Keep project continuity in durable project truth, not in chat history. Treat a t
    - hand off and switch;
    - resume from a handoff.
 2. Inspect the smallest useful current truth: current goal, project stage, semantic owner, active project truth, actual changed state, validation evidence, Git state when present, and relevant live state.
-3. Read [references/session-model.md](references/session-model.md) when establishing or revising project/task topology.
+3. Read [references/session-model.md](references/session-model.md) when establishing or revising project/task topology and before the first formal code write in a project session.
 4. Read [references/switch-gates.md](references/switch-gates.md) whenever running a proactive checkpoint or deciding whether to continue, split, or switch.
 5. Read [references/handoff-contract.md](references/handoff-contract.md) before producing or consuming a handoff.
 6. Read [references/project-adoption.md](references/project-adoption.md) at the first substantial project checkpoint and whenever applying, auditing, updating, or removing the project layer.
 7. Recommend exactly one next task action in plain language when a boundary or missing closeout needs user attention. Explain the evidence, what must happen first, and the risk of switching incorrectly.
 8. If the proactive result is **continue here**, do not add session-management ceremony to an otherwise normal development response unless a short notice materially helps.
-9. If a new task is warranted, provide a concise suggested title, bounded purpose, required inputs, stop condition, and copyable opening prompt. Create it only after an explicit user request.
+9. If a new task is warranted, provide a concise suggested title, bounded purpose, required inputs, stop condition, and copyable opening prompt. Create it only after an explicit user request. Before creating a project topic task, apply the project-workspace selection flow in [references/session-model.md](references/session-model.md); do not inherit the host's Git-project environment default.
 10. If durable project truth must change, name the existing owner and request or rely on authorization for that exact edit. Do not hide project-truth edits inside a session-management action.
 11. Verify every handoff artifact structurally and re-read it. Report volatile or unavailable evidence as unverified.
 
