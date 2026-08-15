@@ -1,0 +1,6 @@
+interface:
+  display_name: "复杂项目会话管理"
+  short_description: "默认采用个人技能与项目指令两层机制，主动管理复杂项目会话边界"
+  default_prompt: "Use $manage-project-sessions in its default two-layer mode to audit this project's checkpoint policy, preserve the effective instruction language, and guide the current task boundary."
+policy:
+  allow_implicit_invocation: true
