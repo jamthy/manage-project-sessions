@@ -34,6 +34,21 @@ Use an existing project convention and index when one exists. A handoff should p
 
 If the user requests a durable handoff but no established location exists, obtain or propose one explicit path before writing. Do not silently invent a new documentation root or modify `AGENTS.md` as part of handoff creation.
 
+## Topic return report
+
+Use a compact return report when a topic reaches a boundary and must give project control the evidence needed to decide what happens next. This report is not automatically a durable handoff artifact and does not need the full template unless the task itself will be replaced or its state cannot otherwise be reconstructed.
+
+Include only:
+
+1. actual status against the topic goal and stop condition;
+2. changed files, artifacts, durable owners, and relevant Git state;
+3. validation performed and exact results;
+4. unresolved failures, dependencies, risks, and unverified planes;
+5. one recommended next project-control decision;
+6. when applicable, the user's exact requested task operation and where project control can verify that user-authored authorization.
+
+Keep inherited claims separate from fresh evidence. Do not send a transcript dump, claim another topic's status without verification, or treat the return report as authority to create, hand off, resume, switch, or direct another topic.
+
 ## Opening prompt requirements
 
 Write the destination prompt so a fresh Codex instance can:

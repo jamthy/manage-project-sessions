@@ -23,6 +23,7 @@ Run a lightweight boundary checkpoint without waiting for session-management wor
 - finish a substantial task or reach its stop condition;
 - move between requirements, architecture, implementation, verification, release, or another stage with a different acceptance boundary;
 - change the semantic owner, subsystem, or primary deliverable;
+- need another topic's result, work, decision, writable owner, or other cross-topic collaboration, even when the current stage and owner have not otherwise changed;
 - enter prolonged diagnosis, repeat failed approaches, or accumulate rejected hypotheses that make context recovery harder;
 - start an independent review, acceptance pass, release-preparation pass, takeover, or later-period continuation;
 - detect contradictions among current chat assumptions, active project truth, code, Git, tests, or runtime evidence;
@@ -31,6 +32,12 @@ Run a lightweight boundary checkpoint without waiting for session-management wor
 Keep this check proportional. Inspect only the evidence needed to decide the boundary. If the result is **continue here** and no user action is needed, continue the requested work without a separate governance report. Surface the result when a switch, new topic, handoff, truth write-back, conflict, or missing closeout requires attention.
 
 A long task or conversation raises the value of a checkpoint but never determines the result by itself.
+
+## Topic-task escalation
+
+When the current task is a topic under established project control, apply the role and routing protocol in [session-model.md](session-model.md#project-control-orchestration) after the checkpoint identifies a real boundary. Topic completion, a cross-topic dependency, a semantic-owner or stage change, or a request to create or switch topics requires a return report to project control and a stop on scope expansion. The topic does not execute or coordinate the next task operation.
+
+Do not escalate ordinary work that remains inside the same goal, owner, stage, and acceptance boundary. A normal edit, test, clarification, or recoverable failure remains in the topic unless other boundary evidence exists.
 
 ## Continue here
 
@@ -96,4 +103,4 @@ Opening prompt: <copyable and bounded>
 Revalidate: <volatile or missing facts>
 ```
 
-Recommend first; create, rename, navigate, archive, or delete a task only after an explicit request for that exact action.
+Recommend first; create, hand off, resume, switch, rename, navigate, archive, or delete a task only after an explicit request for that exact action. In a project-control/topic topology, only project control performs project-wide topic orchestration, subject to the authorization rules in [session-model.md](session-model.md#project-control-responsibilities-and-authorization).

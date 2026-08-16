@@ -20,7 +20,7 @@ At the first substantial checkpoint in a complex project:
 2. Inspect session, task-boundary, handoff, and `$manage-project-sessions` rules.
 3. Classify the project layer as exactly one state:
    - **adopted**: one effective policy or equivalent rule invokes the skill proactively and preserves all required semantics;
-   - **missing**: no effective project-layer checkpoint rule exists;
+   - **missing**: no effective project-layer checkpoint rule exists, or an existing non-conflicting rule omits one or more required meanings;
    - **conflicting**: duplicate, overridden, or contradictory rules could produce inconsistent behavior;
    - **unverified**: the effective owner or override chain cannot be inspected reliably.
 4. Cache the result in the current task context. Re-audit only after the instruction hierarchy changes, the working scope moves under another override, a handoff/resume occurs, or evidence contradicts the cached state.
@@ -68,11 +68,12 @@ Use [../assets/agents-session-policy.md](../assets/agents-session-policy.md) as 
 Use the selected prose language and adapt the heading level to the existing file, while preserving these meanings:
 
 - invoke `$manage-project-sessions` at evidence-backed checkpoints without waiting for the user to mention sessions;
+- include a checkpoint when work needs another topic's result, work, decision, writable owner, or other cross-topic collaboration, even before another stage or owner change occurs;
 - keep ordinary bounded work quiet when the result is to continue;
 - never use message count alone as a switch rule;
 - surface one recommendation only when user attention is needed;
 - require a verified handoff before unsafe switching;
-- never create, navigate, rename, archive, or delete tasks without explicit user authorization;
+- never create, hand off, resume, switch or navigate to, rename, archive, or delete tasks without explicit user authorization for the concrete action;
 - treat the policy as invocation guidance, not as permission to edit project truth or execute external effects.
 
 If a managed block already exists, update it in place. If an equivalent unmarked rule exists, merge with it or replace it only within the authorized scope; do not leave competing rules.

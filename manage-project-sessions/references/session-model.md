@@ -44,13 +44,49 @@ Give it one primary outcome, one semantic boundary, and one stop condition. Exam
 
 Keep work in the same topic task while fixes, tests, and clarification serve the same outcome and owner. Start another topic only when the boundary actually changes.
 
+## Project-control orchestration
+
+Apply this protocol when host metadata, an originating delegation, a verified handoff, or current user direction identifies the current task as project control or as a topic expected to return to project control. A missing or unreachable control route is handled below; it does not let the topic take over orchestration. Do not impose this topology on a short or single-owner project that remains coherent in one bounded task.
+
+### Identify the roles and route
+
+Treat a task as project control only when the relationship is explicit in host task metadata, an originating delegation, a verified handoff, or current user direction. Treat a title such as `<project> | project control`, a matching repository, or a plausible recent task as a discovery hint, never as identity proof.
+
+Before a topic reports or requests coordination, resolve the established project-control route from one of those explicit sources. Use the host's task-messaging capability with the exact host-provided task identifier and host identifier when the host requires both. Never guess, derive, or substitute a task ID from a title, project path, repository, or task list position.
+
+If project control does not exist, cannot be identified, is unavailable, or cannot receive the report, stop at the current topic boundary. Preserve the minimum closeout, tell the user which route is missing, and ask them to establish or restore project control. Do not create a replacement, select a likely task, or route the work to another topic.
+
+### Topic responsibilities at a boundary
+
+While the goal, owner, stage, and acceptance boundary remain unchanged, continue ordinary topic work without status ceremony. Do not report every edit, test, clarification, or small failure.
+
+At any of these real boundary events, stop expanding the topic and return control to project control:
+
+- the topic reaches its stop condition or completes its current stage;
+- progress needs another topic's result, work, decision, or writable owner;
+- the semantic owner, primary deliverable, project stage, or acceptance boundary must change;
+- the topic needs another topic to be created, handed off, resumed, switched to, or otherwise coordinated;
+- the user asks inside the topic to create or switch to another project topic.
+
+Send project control a compact return report using [handoff-contract.md](handoff-contract.md#topic-return-report). Include actual status, changes, validation, unresolved or unverified items, and one recommended next decision. When the user requested a task operation, include the exact requested operation and the available authorization evidence. A report is a decision input, not permission for the topic to continue into the next phase.
+
+A topic must not create, hand off, resume, switch, direct, or coordinate another project topic. It must not turn a cross-topic dependency into direct topic-to-topic instructions. After reporting, wait for project control or the user to return an in-boundary action; do not infer the next topic or broaden scope.
+
+### Project-control responsibilities and authorization
+
+Project control owns project-wide topic orchestration: place the report in the current project stage, reconcile cross-topic dependencies, choose the next bounded owner, and decide whether the correct outcome is to continue, close, create, hand off, resume, or switch.
+
+This orchestration role grants no task-operation authority by itself. Before project control creates, hands off, resumes, switches, navigates to, renames, archives, or deletes a task, require the user's explicit authorization for that concrete action. If the authorization was given in a topic task, project control must verify the exact source request through host-visible task history or another reliable user-authored record; a topic's paraphrase alone is not authorization. If that evidence is unavailable or the requested target or action changed, ask the user again.
+
+Keep task-operation authorization separate from implementation and external-effect authorization. Creating or resuming a topic does not authorize project-file changes, commits, pushes, releases, deployments, or destructive actions.
+
 ## Topology rules
 
 - Create tasks on demand, never as an empty future hierarchy.
 - Prefer one active writer for any code or truth owner.
 - Avoid parallel tasks that can edit the same owner or make competing decisions.
 - Keep project control lightweight; link to topic outcomes and durable truth.
-- Return a completed topic to project control with evidence and the next decision, not a transcript dump.
+- When project control exists, return completed topics and cross-topic boundary decisions through the project-control orchestration protocol above, not directly to another topic.
 - Do not assume every project needs a project-control task. A short or single-owner project may stay in one bounded task.
 
 ## Codex-mode gate before code
